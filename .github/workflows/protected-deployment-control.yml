@@ -1,0 +1,15 @@
+name: protected deployment reviewer control
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  protected-deployment:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Prove reviewer gate
+        run: printf 'SHOULD_NOT_RUN_WITHOUT_REVIEW\n'
